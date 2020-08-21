@@ -14,6 +14,8 @@
 		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
 		<org.springframework-version>4.3.2.RELEASE</org.springframework-version>
+		<jcloverslf4j.version>1.7.6</jcloverslf4j.version>
+		<logback.version>1.1.1</logback.version>
 	</properties>
 
 	<dependencies>
@@ -23,7 +25,15 @@
 			<artifactId>spring-context</artifactId>
 			<version>${org.springframework-version}</version>
 
+			<!-- JCL 제외 --><!-- commons-logging 제외 => Logback을 사용하기 위해 -->
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
+
 		<!--Spring Web -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -36,6 +46,40 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
+		</dependency>
+
+		<!-- Spring Aspect -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+		<!-- Spring JDBC -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+		<!-- MyBatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+
+		<!-- Common DBCP -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
 		</dependency>
 
 		<!--MariaDB JDBC Driver -->
@@ -51,10 +95,29 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+
+		<!-- jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.8</version>
+		</dependency>
+
+		<!-- Logback -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${jcloverslf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<finalName>noticeboard</finalName>
+		<finalName>mysite03</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<!-- 메이븐의 특징 플러그들이 발달 되어 있음 -->
 
