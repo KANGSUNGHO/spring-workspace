@@ -13,8 +13,8 @@
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
 	<bean id="tv" class="polymorphism.SamsungTV">
-		<constructor-arg ref="apple"></constructor-arg>
-		<constructor-arg value="150000"></constructor-arg>
+		<property name="speaker" ref="apple"></property> <!--setSpeaker() 메소드 호출  -->
+		<property name="price" value="150000"></property> <!-- setPrice() 메소드 호출  -->
 	</bean>
 	
 	<bean id="sony" class="polymorphism.SonySpeaker"></bean>
