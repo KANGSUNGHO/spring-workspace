@@ -21,13 +21,14 @@
 ### 스프링 컨테이너의 종류
 * BeanFactory와 이를 상속한 ApplicationContext 두 가지 유형의 컨테이너를 제공함.
 * BeanFactory 
-	- 스프링 설정 파일에 등록된 <bean> 객체를 생성하고 관리하는 가장 기본적인 컨테이너 기능 제공.
-	- 컨테이너가 구동될 때 <bean> 객체를 생성하는 것이 아니라, 클라이언트의 요청에 의해서만 <bean> 객체가 생성되는 지연 로딩 방식을 사용함. 
+	- 스프링 설정 파일에 등록된 "<bean>" 객체를 생성하고 관리하는 가장 기본적인 컨테이너 기능 제공.
+	- 컨테이너가 구동될 때 "<bean>" 객체를 생성하는 것이 아니라, 클라이언트의 요청에 의해서만 "<bean>" 객체
+	가 생성되는 지연 로딩 방식을 사용함. 
 	- 일반적인 스프링 프로젝트에서 BeanFactory를 사용할 일은 없음.
 	
 * ApplicationContext
-	- BeanFactory가 제공하는 <bean> 객체 관리 기능 외에도 트랜잭션 관리나 메시지 기반의 다국어 처리 등 다양한 기능을 지원함.
-	- 컨테이너가 구동되는 시점에 <bean>에 등록된 클래스들을 객체 생성하는 즉시 로딩 방식으로 동작함.
+	- BeanFactory가 제공하는 "<bean>" 객체 관리 기능 외에도 트랜잭션 관리나 메시지 기반의 다국어 처리 등 다양한 기능을 지원함.
+	- 컨테이너가 구동되는 시점에 "<bean>"에 등록된 클래스들을 객체 생성하는 즉시 로딩 방식으로 동작함.
 	- 웹 애플리케이션 개발도 지워하므로 대부분의 스프링 프로젝트에 사용함. 
 	* 구현 클래스(GenericXmlAplicationContext, XmlWebApplicationContext)
 		* GenericXmlApplicationContext
@@ -38,34 +39,34 @@
 ### <bean> 엘리먼트 속성
 * (1) init-method 속성
 	- 객체를 생성한 후에 멤버변수 초기화 작업이 필요할 때 사용.
-	- <bean id = "tv" class="polymorphism.SamsungTV" init-method="initMethod" />
+	- "<bean id = "tv" class="polymorphism.SamsungTV" init-method="initMethod" />"
 	- 스프링 컨테이너는 <bean>에 등록된 클래스 객체를 생성한 후에 init-method 속성으로 지정
 	initMethod() 메소드를 호출함.
 * (2) destory-method 속성
-	- <bean> 엘리먼트에서 destroy-method 속성을 이용하여 스프링 컨테이너가 객체를 삭제하기 직전에 호출될
+	- "<bean>" 엘리먼트에서 destroy-method 속성을 이용하여 스프링 컨테이너가 객체를 삭제하기 직전에 호출될
 	임의의 메소드를 지정할 수 있음.
-	- <bean id="tv" class="polymorphism.SamsungTV" destroy-method="destroyMethod" />
+	- "<bean id="tv" class="polymorphism.SamsungTV" destroy-method="destroyMethod" />"
 * (3) lazy-init 속성
-	- ApplicationContext를 이용하여 컨테이너를구동하면 컨테이너가 구동되는 시점에 스프링설정 파일에 등록된
-	<bean>들을 생성하는 즉시 로딩 방식으로 동작함
-	- 그런데 어떤 <bean>은 자주 사용되지도 않으면서 메모리를 많이 차지하여 시스템에 부담을 주는 경우도 있음.
-	- 따라서 스프링에서는 컨테이너가 구동되는 시점이 아닌 해당 <bean>이 사용되는 시점에 객체를 생성하도록
+	- ApplicationContext를 이용하여 컨테이너를 구동하면 컨테이너가 구동되는 시점에 스프링설정 파일에 등록된
+	"<bean>"들을 생성하는 즉시 로딩 방식으로 동작함
+	- 그런데 어떤 "<bean>"은 자주 사용되지도 않으면서 메모리를 많이 차지하여 시스템에 부담을 주는 경우도 있
+	음.
+	- 따라서 스프링에서는 컨테이너가 구동되는 시점이 아닌 해당 "<bean>"이 사용되는 시점에 객체를 생성하도록
 	lazy-init 속성을 제공함.
-	- 특정 <bean>을 등록할 때, lazy-init="true"로 설정하면 스프링 컨테이너는 해당 <bean>을 미리
+	- 특정 "<bean>"을 등록할 때, lazy-init="true"로 설정하면 스프링 컨테이너는 해당 "<bean>"을 미리
 	생성하지 않고 클라이언트가 요청하는 시점에 생성함.
 	- 메모리 관리를 더 효율적으로 할 수 있음.
-	- <bean id="tv" class="polyporphism.SamsungTV" lazy-init="true" />
+	- "<bean id="tv" class="polyporphism.SamsungTV" lazy-init="true" />"
 * (4) scope 속성
 	- 클래스로부터 객체를 생성하는 쪽에서 자동으로 싱글톤 객체로 생성해주는 것이 가장 바람직하며, 스프링에서는
 	 이런 기능을 컨테이너가 제공함.
 	 - 스프링 컨테이너는 컨테이너가 생성한 bean을 어느 범위에서 사용할 수 있는지를 지정할 수 있음. 
 	 - scope 속성 값은 기본이 싱글톤 -> 해당 bean이 스프링 컨테이너에 의해 단 하나만 생성 되어 운영되도록 	함.
-	- <bean id="tv" class="polymorphism.SamsungTV" scope="singleton" />
-	- scpoe 속성을 "prototype"으로 지정할 수 잇는데 이렇게 지정하면 스프링 컨테이너는 해당 <bean>이
+	- "<bean id="tv" class="polymorphism.SamsungTV" scope="singleton" />"
+	- scpoe 속성을 "prototype"으로 지정할 수 잇는데 이렇게 지정하면 스프링 컨테이너는 해당 "<bean>"이
 	요청될 때마다 매번 새로운 객체를 생성하여 반환함.
-	- <bean id="tv" class="polymorphism.SamsungTV" scope="prototype" />
+	- "<bean id="tv" class="polymorphism.SamsungTV" scope="prototype" />"
 	
-
 
 
 
