@@ -12,6 +12,13 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
-	<bean id="tv" class="polymorphism.LgTV" />
+	<bean id="tv" class="polymorphism.SamsungTV">
+		<constructor-arg ref="apple"></constructor-arg>
+		<constructor-arg value="150000"></constructor-arg>
+	</bean>
+	
+	<bean id="sony" class="polymorphism.SonySpeaker"></bean>
+	
+	<bean id="apple" class="polymorphism.AppleSpeaker"></bean>
 
 </beans>
