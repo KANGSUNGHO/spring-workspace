@@ -33,5 +33,6 @@
 
 	<modules>
 		<module>noticeboard</module>
+		<module>myboard</module>
 	</modules>
 </project>
