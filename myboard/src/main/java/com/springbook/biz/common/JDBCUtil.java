@@ -8,8 +8,9 @@ import java.sql.ResultSet;
 public class JDBCUtil {
 	public static Connection getConnection() {
 		try {
+			System.out.println("접속완료");
 			Class.forName("org.mariadb.jdbc.Driver");
-			return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/webboard?characterEncoding=utf8");
+			return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/webboard?characterEncoding=utf8","webboard","webboard");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
