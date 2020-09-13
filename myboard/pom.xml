@@ -131,7 +131,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>mysite03</finalName>
+		<finalName>myboard</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<!-- 메이븐의 특징 플러그들이 발달 되어 있음 -->
 
