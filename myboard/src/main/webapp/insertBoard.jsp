@@ -7,9 +7,9 @@
 </head>
 <body>
 	<h1>글 등록</h1>
-	<a href="logout_proc.jsp">Log-Out</a>
+	<a href="logout.do">Log-Out</a>
 	<hr>
-	<form action="insertBoard_proc.jsp" method="post">
+	<form action="insertBoard.do" method="post">
 		<table border="1" cellpdding="0" cellspacing="0">
 			<tr>
 				<td bgcolor="orange" width="70">제목</td>
