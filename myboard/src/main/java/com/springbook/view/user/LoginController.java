@@ -1,7 +1,10 @@
 package com.springbook.view.user;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.springbook.biz.user.UserVO;
 import com.springbook.biz.user.impl.UserDAO;
@@ -9,12 +12,20 @@ import com.springbook.biz.user.impl.UserDAO;
 @Controller
 public class LoginController{
 
-	@RequestMapping("/login.do")
-	public String login(UserVO vo, UserDAO userDAO){
+	@RequestMapping(value="/login.do", method=RequestMethod.GET)
+	public String loginView(UserVO vo) {
+		System.out.println("로그인 화면으로 이동");
+		vo.setId("test");
+		vo.setPassword("test1234");
+		return "login.jsp";
+	}
+	@RequestMapping(value="/login.do", method=RequestMethod.POST)
+	public String login(UserVO vo, UserDAO userDAO, HttpSession session){
 		System.out.println("로그인 처리");
-
+		UserVO user = userDAO.getUser(vo);
 		// 3. 화면 네비게이션
-		if (userDAO.getUser(vo) != null) {
+		if (user != null) {
+			session.setAttribute("userName", user.getName());
 			return "getBoardList.do";
 		} else {
 			return "login.jsp";
