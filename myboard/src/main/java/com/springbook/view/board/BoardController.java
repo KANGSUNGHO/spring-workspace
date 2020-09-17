@@ -68,6 +68,10 @@ public class BoardController {
 	// 글 목록 조회
 	@RequestMapping("/getBoardList.do")
 	public String getBoardList(BoardVO vo, Model model) {
+		// Null Check
+		if(vo.getSearchCondition() == null) vo.setSearchCondition("TITLE");
+		if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
+		
 		model.addAttribute("boardList", boardService.getBoardList(vo)); // Model 정보 저장
 		return "getBoardList.jsp"; // View 이름 리턴
 	}
