@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.springbook.biz.board.BoardListVO;
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
 
@@ -27,14 +28,16 @@ public class BoardController {
 	
 	@RequestMapping("/dataTransform.do")
 	@ResponseBody
-	public List<BoardVO> dataTransform(BoardVO vo){
+	public BoardListVO dataTransform(BoardVO vo){
 		vo.setSearchCondition("TITLE");
 		vo.setSearchKeyword("");
 		List<BoardVO> boardList = boardService.getBoardList(vo);
-		return boardList;
+		
+		BoardListVO boardListVO = new BoardListVO();
+		boardListVO.setBoardList(boardList);
+		System.out.println("boardList" + boardList);
+		return boardListVO;
 	}
-	
-
 	
 	// 글 등록
 	@RequestMapping("/insertBoard.do")
