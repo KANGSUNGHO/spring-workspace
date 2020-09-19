@@ -45,11 +45,15 @@
 	</select>
 	
 	<select id="getBoardList" resultMap="boardResult">
-		<![CDATA[
-			SELECT *
-			FROM BOARD
-			WHERE TITLE CONCAT('%',#{searchKeyword},'%')
-			ORDER BY SEQ DESC
-		]]>
+		SELECT *
+		FROM BOARD
+		WHERE 1 = 1
+		<if test="searchCondition == 'TITLE'">
+			AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')
+		</if>
+		<if test="searchCondition == 'CONTENT'">
+			AND CONTENT LIKE CONCAT('%',#{searchKeyword},'%')
+		</if>
+		ORDER BY SEQ DESC
 	</select>
 </mapper>
